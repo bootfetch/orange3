@@ -138,7 +138,13 @@ class TreeNode(GraphicsNode):
         font = self.document().defaultFont()
         painter.setFont(font)
         if self.parent:
+            
+            #PLIM[8-9-2022] theory is that this is where i can get the text, ide like to write this into a file
             draw_text = str(self.tree_adapter.short_rule(self.node_inst))
+
+            with open('PLIMHARVESTEDTEXT.txt', 'a') as f:
+                f.write(draw_text)
+
             if self.parent.x() > self.x():  # node is to the left
                 fm = QFontMetrics(font)
                 x = rect.width() / 2 - fm.horizontalAdvance(draw_text) - 4
